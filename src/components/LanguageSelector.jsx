@@ -3,13 +3,13 @@ import languages from '../data/languages';
 
 function LanguageSelector() {
     const languagesList = [...languages];
-    const [activeLanguage, setActiveLanguage] = useState(languagesList[0]);
+    const [activeLanguage, setActiveLanguage] = useState(null);
     return (
         <>
             <div>
                 <ul className='d-flex align-items-center flex-wrap'>
                     {languagesList.map((language) => {
-                        return (<li key={language.id} className={`my-4 text-bg-${activeLanguage.id === language.id ? 'warning' : 'primary'}`}
+                        return (<li key={language.id} className={`my-4 text-bg-${activeLanguage?.id === language.id ? 'warning' : 'primary'}`}
                             onClick={() => setActiveLanguage(language)} >
                             {language.title}
                         </li>
@@ -18,8 +18,14 @@ function LanguageSelector() {
                 </ul>
             </div>
             <div className="card card-body">
-                <h2>{activeLanguage.title}</h2>
-                <p>{activeLanguage.description}</p>
+                {activeLanguage ? (
+                    <>
+                        <h2>{activeLanguage.title}</h2>
+                        <p>{activeLanguage.description}</p>
+                    </>
+                ) : (
+                    <p>Nessun linguaggio selezionato</p>
+                )}
             </div>
         </>
     )
