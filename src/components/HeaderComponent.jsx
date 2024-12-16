@@ -1,6 +1,6 @@
 function HeaderComponent() {
     return (
-        <header>
+        <header className="d-flex align-items-center">
             <h1>Learn Web Developement</h1>
         </header>
     )

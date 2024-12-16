@@ -1,6 +1,15 @@
 header {
     background-color: #F8F9FA;
     height: 80px;
-    display: flex;
-    align-items: center;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    width: auto;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
 }
