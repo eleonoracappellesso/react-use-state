@@ -3,17 +3,25 @@ import languages from '../data/languages';
 
 function MainComponent() {
     const languagesList = [...languages];
-
+    const [activeLanguage, setActiveLanguage] = useState(languagesList[0]);
     return (
         <>
             <main className='container'>
-                <section>
+                <div>
                     <ul className='d-flex align-items-center flex-wrap'>
                         {languagesList.map((language) => {
-                            return <li key={language.id} className='text-bg-warning my-4'>{language.title}</li>
+                            return (<li key={language.id} className={`my-4 text-bg-${activeLanguage.id === language.id ? 'warning' : 'primary'}`}
+                                onClick={() => setActiveLanguage(language)} >
+                                {language.title}
+                            </li>
+                            )
                         })}
                     </ul>
-                </section>
+                </div>
+                <div className="card card-body">
+                    <h2>{activeLanguage.title}</h2>
+                    <p>{activeLanguage.description}</p>
+                </div>
             </main>
         </>
     )
